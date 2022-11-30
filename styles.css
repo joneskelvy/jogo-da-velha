@@ -9,17 +9,17 @@ body {
     width: 100vw;
     background: linear-gradient(
         90deg,
-        rgb(99, 0, 129) 0%,
-        rgba(0, 0, 0, 0.616) 100%
+        rgb(1, 53, 3) 0%,
+        rgb(0, 0, 0) 100%
     );
 }
 
 h1 {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 0px;
+    margin-top: 30px;
+    margin-bottom: 5px;
     font-family:'Fredericka the Great', cursive;
-    color: white;
+    color: rgb(214, 54, 147);
     font-size: 60px;
 }
 
