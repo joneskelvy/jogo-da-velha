@@ -89,7 +89,7 @@ h1 {
     content: "";
     height: calc(100px * 0.15);
     width: calc(100px * 0.9);
-    background: white;
+    background: rgb(57, 8, 87);
     position: absolute;
 }
 
