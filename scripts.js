@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 const AI_CLASS = 'circle';
 const HUMAN_CLASS = 'x';
 const cellElements = document.querySelectorAll('[data-cell]');
-=======
-const cellElements = document.querySelectorAll('[data-cell');
->>>>>>> 0ea20adce1e47bdb7ec6501a91d642094a423cd2
 const board = document.querySelector('[data-board]')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 const winningMessage = document.querySelector('[data-winning-message]');
@@ -24,7 +20,6 @@ const winningCombinations = [
 ];
 
 const startGame = () => {
-<<<<<<< HEAD
 
     winningMessage.classList.remove("show-winning-message");
 
@@ -58,33 +53,6 @@ const endGame = (isDraw, winner) => {
 
     winningMessage.classList.add("show-winning-message");
 };
-=======
-    isCircleTurn = false;
-
-    for (const cell of cellElements) {
-        cell.classList.remove('circle');
-        cell.classList.remove('x');
-        cell.removeEventListener('click', handleClick);
-        cell.addEventListener('click', handleClick, { once: true })
-    }
-
-    setBoardHoverClass()
-    winningMessage.classList.remove("show-winning-message");
-
-};
-
-const endGame = (isDraw) => {
-    if (isDraw) {
-        winningMessageTextElement.innerText = 'Empate!'
-    } else {
-        winningMessageTextElement.innerText = isCircleTurn 
-        ? 'Círculo Venceu!' 
-        : 'X Venceu!'
-    }
-    
-    winningMessage.classList.add("show-winning-message");
-}
->>>>>>> 0ea20adce1e47bdb7ec6501a91d642094a423cd2
 
 const checkForWin = (currentPlayer) => {
     return winningCombinations.some((combination) => {
@@ -113,7 +81,6 @@ const setBoardHoverClass = () => {
     } else {
         board.classList.add('x');
     }
-<<<<<<< HEAD
 };
 
 const handleClick = (e) => {
@@ -173,36 +140,3 @@ const aiMove = () => {
 startGame();
 
 restartButton.addEventListener("click", startGame);
-=======
-}
-
-const swapTurns = () => {
-    isCircleTurn = !isCircleTurn;
-
-   setBoardHoverClass();
-    
-};
-
-const handleClick =  (e) => {
-    const cell = e.target;
-    const classToAdd = isCircleTurn ? 'circle' : 'x'; 
-
-   placeMark(cell, classToAdd); 
-    const isWin = checkForWin(classToAdd);
-
-    const isDraw = checkForDraw();
-    if (isWin) {
-        endGame(false);{}
-    } else if (isDraw) {
-        endGame(true)
-        } else {
-            swapTurns (); 
-        };
-        
-        }
-   
-
-startGame();
-
-restartButton.addEventListener("click", startGame);
->>>>>>> 0ea20adce1e47bdb7ec6501a91d642094a423cd2
