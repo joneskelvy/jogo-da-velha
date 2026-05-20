@@ -1,0 +1,199 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(
+         135deg,
+         #0f172a 0%,
+         #1e293b 40%,
+         #334155 100%
+    );
+}
+
+h1 {
+    font-family:'Fredericka the Great', cursive;
+    color: white;
+    font-size: 4rem;
+    margin-bottom: 40px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.board  {
+display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 10px;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow:
+    0 8px 32px rgba(0,0,0,0.3);
+}
+
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Cell */
+.cell {
+    width: 120px;
+    height: 120px;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cell:hover{
+    transform: scale(1.05);
+
+    background: rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.1);
+}
+
+.cell.x, .cell.circle {
+    animation: pop 0.2s ease;
+    cursor: not-allowed;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+    border-left: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+    border-right: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+    border-bottom: none;
+}
+
+/* x */
+.cell.x::before,
+.cell.x::after, 
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before {
+    content: "";
+    height: calc(100px * 0.15);
+    width: calc(100px * 0.9);
+    background: #38bdf8;
+    position: absolute;
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+}
+
+/* circle */
+.cell.circle::before,
+.cell.circle::after, 
+.board.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+    content: "";
+    height: calc(100px * 0.9);
+    width: calc(100px * 0.9);
+   background: #f472b6;
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* Message Victory */
+.winning-message {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.75);
+
+    backdrop-filter: blur(8px);
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.winning-message button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    background: #38bdf8;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.winning-message-button:hover {
+
+    transform: scale(1.05);
+
+    opacity: 0.9;
+}
+
+.winning-message-button:hover {
+    transform: scale(1.05);
+    color: rgba(65, 185, 131, 1);
+    background-color: white;
+}
+
+.winning-message-text {
+    color: white;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.show-winning-message {
+    display: flex;
+}
